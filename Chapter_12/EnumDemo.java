@@ -6,8 +6,7 @@ enum Transport {
 }
 
 class EnumDemo {
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         Transport tp;
 
         tp = Transport.AIRPLANE;
@@ -19,26 +18,17 @@ class EnumDemo {
         tp = Transport.TRAIN;
 
         // Compare two enum values.
-        if(tp == Transport.TRAIN)
+        if (tp == Transport.TRAIN) {
             System.out.println("tp contains TRAIN.\n");
+        }
 
         // Use an enum to control a switch statement.
-        switch(tp) {
-            case CAR:
-                System.out.println("A car carries people.");
-                break;
-            case TRUCK:
-                System.out.println("A truck carries freight.");
-                break;
-            case AIRPLANE:
-                System.out.println("An airplane flies.");
-                break;
-            case TRAIN:
-                System.out.println("A train runs on rails.");
-                break;
-            case BOAT:
-                System.out.println("A boat sails on water.");
-                break;
+        switch (tp) {
+            case CAR -> System.out.println("A car carries people.");
+            case TRUCK -> System.out.println("A truck carries freight.");
+            case AIRPLANE -> System.out.println("An airplane flies.");
+            case TRAIN -> System.out.println("A train runs on rails.");
+            case BOAT -> System.out.println("A boat sails on water.");
         }
     }
 }
