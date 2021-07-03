@@ -14,7 +14,7 @@ class FDemo {
 
     // called when object is recycled
     protected void finalize() {
-        System.out.print("Finalizing " + x + " ");
+        System.out.println("Finalizing " + x + " " + this);
     }
 
     // generates an object that is immediately destroyed
