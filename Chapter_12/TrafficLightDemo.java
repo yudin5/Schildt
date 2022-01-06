@@ -33,20 +33,14 @@ class TrafficLightSimulator implements Runnable {
 
     // Start up the light.
     public void run() {
-        while(!stop) {
+        while (!stop) {
             try {
-                switch(tlc) {
-                    case GREEN:
-                        Thread.sleep(10000); // green for 10 seconds
-                        break;
-                    case YELLOW:
-                        Thread.sleep(2000);  // yellow for 2 seconds
-                        break;
-                    case RED:
-                        Thread.sleep(12000); // red for 12 seconds
-                        break;
+                switch (tlc) {
+                    case GREEN -> Thread.sleep(10000); // green for 10 seconds
+                    case YELLOW -> Thread.sleep(2000);  // yellow for 2 seconds
+                    case RED -> Thread.sleep(12000); // red for 12 seconds
                 }
-            } catch(InterruptedException exc) {
+            } catch (InterruptedException exc) {
                 System.out.println(exc);
             }
             changeColor();
@@ -55,15 +49,10 @@ class TrafficLightSimulator implements Runnable {
 
     // Change color.
     synchronized void changeColor() {
-        switch(tlc) {
-            case RED:
-                tlc = TrafficLightColor.GREEN;
-                break;
-            case YELLOW:
-                tlc = TrafficLightColor.RED;
-                break;
-            case GREEN:
-                tlc = TrafficLightColor.YELLOW;
+        switch (tlc) {
+            case RED -> tlc = TrafficLightColor.GREEN;
+            case YELLOW -> tlc = TrafficLightColor.RED;
+            case GREEN -> tlc = TrafficLightColor.YELLOW;
         }
 
         changed = true;
@@ -73,10 +62,10 @@ class TrafficLightSimulator implements Runnable {
     // Wait until a light change occurs.
     synchronized void waitForChange() {
         try {
-            while(!changed)
+            while (!changed)
                 wait(); // wait for light to change
             changed = false;
-        } catch(InterruptedException exc) {
+        } catch (InterruptedException exc) {
             System.out.println(exc);
         }
     }
@@ -97,7 +86,7 @@ class TrafficLightDemo {
         TrafficLightSimulator tl =
                 new TrafficLightSimulator(TrafficLightColor.GREEN);
 
-        for(int i=0; i < 9; i++) {
+        for (int i = 0; i < 9; i++) {
             System.out.println(tl.getColor());
             tl.waitForChange();
         }
