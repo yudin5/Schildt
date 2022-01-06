@@ -54,7 +54,7 @@ class ButtonDemo implements ActionListener {
             jlab.setText("You pressed down. ");
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         // Create the frame on the event dispatching thread.
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
